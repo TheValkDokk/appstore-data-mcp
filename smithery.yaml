@@ -1,0 +1,18 @@
+# Smithery configuration (https://smithery.ai)
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    required:
+      - rapidApiKey
+    properties:
+      rapidApiKey:
+        type: string
+        title: RapidAPI key
+        description: Free key from https://rapidapi.com/TheValkDokk/api/app-store-google-play-data-api
+  commandFunction: |-
+    (config) => ({
+      command: 'npx',
+      args: ['-y', 'appstore-data-mcp'],
+      env: { RAPIDAPI_KEY: config.rapidApiKey }
+    })

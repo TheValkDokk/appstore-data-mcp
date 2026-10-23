@@ -1,0 +1,28 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+  "name": "io.github.TheValkDokk/appstore-data",
+  "description": "Live App Store and Google Play data: app details, reviews, keyword search, top charts and categories across 175+ storefronts.",
+  "version": "0.1.0",
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "appstore-data-mcp",
+      "version": "0.1.0",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "RAPIDAPI_KEY",
+          "description": "RapidAPI key from https://rapidapi.com/TheValkDokk/api/app-store-google-play-data-api",
+          "isRequired": true,
+          "isSecret": true
+        }
+      ]
+    }
+  ],
+  "repository": {
+    "url": "https://github.com/TheValkDokk/appstore-data-mcp",
+    "source": "github"
+  }
+}
