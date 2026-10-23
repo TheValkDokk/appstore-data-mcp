@@ -1,6 +1,6 @@
 {
   "name": "appstore-data-mcp",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "MCP server for live App Store and Google Play data: app details, reviews, search and top charts, via the App Store Google Play Data API.",
   "type": "module",
   "bin": {
@@ -50,5 +50,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "mcpName": "io.github.thevalkdokk/appstore-data"
+  "mcpName": "io.github.TheValkDokk/appstore-data"
 }

@@ -1,18 +1,18 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
-  "name": "io.github.thevalkdokk/appstore-data",
+  "name": "io.github.TheValkDokk/appstore-data",
   "title": "App Store + Google Play Data",
   "description": "Live App Store and Google Play data: app details, reviews, search, top charts for 175+ storefronts.",
   "repository": {
     "url": "https://github.com/TheValkDokk/appstore-data-mcp",
     "source": "github"
   },
-  "version": "0.1.1",
+  "version": "0.1.2",
   "packages": [
     {
       "registryType": "npm",
       "identifier": "appstore-data-mcp",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "transport": {
         "type": "stdio"
       },

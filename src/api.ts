@@ -83,6 +83,9 @@ export async function call(path: string, params: Record<string, unknown> = {}): 
   return body;
 }
 
+const round2 = (n: unknown): number | undefined =>
+  typeof n === "number" && Number.isFinite(n) ? Math.round(n * 100) / 100 : undefined;
+
 const clip = (s: unknown, n: number): string | undefined => {
   if (typeof s !== "string" || !s) return undefined;
   const clean = s.replace(/\s+/g, " ").trim();
@@ -97,7 +100,7 @@ export function normalizeApp(store: Store, raw: any) {
     id: ios ? raw.track_id : raw.app_id,
     name: ios ? raw.track_name : raw.title,
     developer: ios ? raw.artist_name : raw.developer,
-    rating: ios ? raw.rating : raw.score,
+    rating: round2(ios ? raw.rating : raw.score),
     rating_count: ios ? raw.rating_count : raw.reviews,
     price: raw.price ?? null,
     currency: raw.currency ?? null,
@@ -120,7 +123,7 @@ export function normalizeSearchHit(store: Store, raw: any) {
     id: ios ? raw.track_id : raw.app_id,
     name: ios ? raw.track_name : raw.title,
     developer: ios ? raw.artist_name : raw.developer,
-    rating: ios ? raw.rating : raw.score,
+    rating: round2(ios ? raw.rating : raw.score),
     price: raw.price ?? null,
     is_free: raw.is_free,
     icon_url: ios ? raw.icon_url : raw.icon,
@@ -132,7 +135,7 @@ export function normalizeReview(raw: any) {
   return {
     id: raw.id,
     author: raw.author ?? raw.username,
-    rating: raw.rating ?? raw.score,
+    rating: round2(raw.rating ?? raw.score),
     title: raw.title,
     text: clip(raw.content, 300),
     date: raw.date ?? raw.at,
@@ -149,7 +152,7 @@ export function normalizeChartRow(store: Store, raw: any) {
     id: ios ? raw.track_id : raw.app_id,
     name: ios ? raw.track_name : raw.title,
     developer: ios ? raw.artist_name : raw.developer,
-    rating: ios ? raw.rating : raw.score,
+    rating: round2(ios ? raw.rating : raw.score),
     price: raw.price ?? null,
     icon_url: ios ? raw.icon_url : raw.icon,
   };
