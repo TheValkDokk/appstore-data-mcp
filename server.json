@@ -7,12 +7,12 @@
     "url": "https://github.com/TheValkDokk/appstore-data-mcp",
     "source": "github"
   },
-  "version": "0.1.2",
+  "version": "0.2.0",
   "packages": [
     {
       "registryType": "npm",
       "identifier": "appstore-data-mcp",
-      "version": "0.1.2",
+      "version": "0.2.0",
       "transport": {
         "type": "stdio"
       },
@@ -23,6 +23,20 @@
           "isRequired": true,
           "isSecret": true,
           "format": "string"
+        }
+      ]
+    }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://appstore-mcp-623314400722.us-central1.run.app/mcp",
+      "headers": [
+        {
+          "name": "X-RapidAPI-Key",
+          "description": "RapidAPI key from https://rapidapi.com/TheValkDokk/api/app-store-google-play-data-api",
+          "isRequired": true,
+          "isSecret": true
         }
       ]
     }

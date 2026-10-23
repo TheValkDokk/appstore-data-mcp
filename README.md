@@ -64,6 +64,26 @@ Both stores are normalized to the same field names (`id`, `name`, `developer`, `
 - "Which photography apps are top-grossing in Japan right now?"
 - "Pull the 25 most recent reviews for `com.spotify.music` in the UK and summarise the complaints."
 
+## Hosted endpoint (no install)
+
+A remote copy runs at `https://appstore-mcp-623314400722.us-central1.run.app/mcp` (streamable HTTP, stateless).
+Send your own RapidAPI key as a header — nothing is shared or stored server-side:
+
+```json
+{
+  "mcpServers": {
+    "appstore-data": {
+      "type": "http",
+      "url": "https://appstore-mcp-623314400722.us-central1.run.app/mcp",
+      "headers": { "X-RapidAPI-Key": "your-rapidapi-key" }
+    }
+  }
+}
+```
+
+`Authorization: Bearer <key>` and `?key=<key>` work too. Tools list without a key, so directory crawlers can index the
+server; a tool call without one returns `MISSING_CREDENTIALS` with the signup link.
+
 ## Configuration
 
 | Variable | Required | Purpose |
