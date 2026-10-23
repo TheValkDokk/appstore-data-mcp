@@ -32,8 +32,10 @@ function config() {
   return { key, host, base, proxySecret };
 }
 
-export async function call(path: string, params: Record<string, unknown> = {}): Promise<any> {
-  const { key, host, base, proxySecret } = config();
+export async function call(path: string, params: Record<string, unknown> = {}, opts: { key?: string } = {}): Promise<any> {
+  const cfg = config();
+  const key = opts.key?.trim() || cfg.key;
+  const { host, base, proxySecret } = cfg;
   if (!key && !proxySecret) {
     throw new ApiError(
       0,
