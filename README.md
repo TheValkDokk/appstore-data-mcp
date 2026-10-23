@@ -88,3 +88,11 @@ RAPIDAPI_KEY=xxx npm run smoke   # 26 end-to-end checks against the live API
 ## License
 
 MIT
+
+## Registries
+
+- npm: [appstore-data-mcp](https://www.npmjs.com/package/appstore-data-mcp)
+- Official MCP Registry: `io.github.thevalkdokk/appstore-data`
+- Smithery / Glama / mcp.so: listed from this repo and the npm package
+
+Auto-publish to the MCP Registry runs from `.github/workflows/mcp-registry.yml` on every release.
