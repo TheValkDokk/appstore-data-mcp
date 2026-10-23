@@ -37,5 +37,17 @@
   "devDependencies": {
     "typescript": "^5.7.0",
     "@types/node": "^22.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheValkDokk/appstore-data-mcp.git"
+  },
+  "homepage": "https://github.com/TheValkDokk/appstore-data-mcp#readme",
+  "bugs": {
+    "url": "https://github.com/TheValkDokk/appstore-data-mcp/issues"
+  },
+  "author": "Valk Dokk",
+  "publishConfig": {
+    "access": "public"
   }
 }
