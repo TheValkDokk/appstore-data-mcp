@@ -1,5 +1,7 @@
 # appstore-data-mcp
 
+[![App Store + Google Play Data MCP server](https://mcprush.com/badge/app-store-google-play-data-mcp/card.svg)](https://mcprush.com/to/app-store-google-play-data-mcp?ref=badge)
+
 MCP server that gives Claude, Cursor, VS Code, Codex and any other MCP client **live data from the Apple App Store and Google Play** — app details, reviews, keyword search, top charts and category taxonomies, for 175+ country storefronts.
 
 Powered by the [App Store Google Play Data API](https://rapidapi.com/TheValkDokk/api/app-store-google-play-data-api) (free tier: 500 calls/month).
@@ -21,7 +23,25 @@ Both stores are normalized to the same field names (`id`, `name`, `developer`, `
 1. Get a free RapidAPI key: <https://rapidapi.com/TheValkDokk/api/app-store-google-play-data-api> → subscribe to BASIC → copy `X-RapidAPI-Key` from the code snippet.
 2. Add the server to your client with `RAPIDAPI_KEY` in the environment.
 
-### Claude Desktop / Claude Code
+### Claude Code
+
+```bash
+# key already exported in your shell
+claude mcp add appstore-data --scope user -e RAPIDAPI_KEY=$RAPIDAPI_KEY -- npx -y appstore-data-mcp
+
+# or inline the key
+claude mcp add appstore-data --scope user -e RAPIDAPI_KEY=<your-rapidapi-key> -- npx -y appstore-data-mcp
+```
+
+Then `claude mcp list` should report `appstore-data: npx -y appstore-data-mcp - ✔ Connected`.
+
+A `-e` value written as `${SOMETHING}` is resolved against Claude Code's own environment when it
+spawns the server, so `-e 'RAPIDAPI_KEY=${RAPIDAPI_KEY}'` only works if `RAPIDAPI_KEY` is exported
+in the shell that starts Claude Code. If it is not, `claude mcp list` warns
+`Missing environment variables: RAPIDAPI_KEY` and tool calls come back as `MISSING_CREDENTIALS`.
+The server itself starts either way — the key is only read at tool-call time.
+
+### Claude Desktop
 
 `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS) or `%APPDATA%\Claude\claude_desktop_config.json` (Windows):
 
@@ -113,6 +133,7 @@ MIT
 
 - npm: [appstore-data-mcp](https://www.npmjs.com/package/appstore-data-mcp)
 - Official MCP Registry: `io.github.thevalkdokk/appstore-data`
+- mcprush: [App Store + Google Play Data MCP](https://mcprush.com/thevalkdokk/app-store-google-play-data-mcp)
 - Smithery / Glama / mcp.so: listed from this repo and the npm package
 
 Auto-publish to the MCP Registry runs from `.github/workflows/mcp-registry.yml` on every release.
